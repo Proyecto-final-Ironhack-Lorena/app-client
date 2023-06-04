@@ -33,12 +33,19 @@ function AuthWrapper({children}) {
         }
     }
 
+    const signout = async () => {
+        localStorage.removeItem('tokenAuth')
+        await tokenVerification()
+
+        }
+
     //2- El objeto de contexto que pasaremos
 
     const contextObj = {
         user,
         logged,
-        tokenVerification
+        tokenVerification,
+        signout
     }
 
     //3- La renderización de la App con el contexto
@@ -49,6 +56,8 @@ function AuthWrapper({children}) {
           </Box>
         )
       }
+
+
 
       return (
 
