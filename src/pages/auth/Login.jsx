@@ -1,35 +1,38 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom"
-import * as BackendService from "../services/auth.services";
+import * as BackendService from "../../services/auth.services";
 import { Box, Button, TextField, Typography } from "@mui/material";
 
-import './Signup.css';
+import './Auth.css';
+import { AuthContext } from "../../context/auth.context";
 
-function Signup() {
-
-    const [username, setUsername ] = useState("")
+function Login() {
+  
     const [email, setEmail ] = useState("")
     const [password, setPassword ] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
     const navigate = useNavigate()
 
-    const handleUsernameChange = (e) => setUsername(e.target.value);
+    const context = useContext(AuthContext);
+
     const handleEmailChange = (e) => setEmail(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
 
-    const handleSignup = async (event) => {
+    const handleLogin = async (event) => {
         event.preventDefault()
 
         try{
 
             const user ={
-                username,
                 email,
                 password
             }
 
-            await BackendService.signup(user)
-            navigate("/auth/login")
+            const response = await BackendService.login(user)
+            localStorage.setItem("tokenAuth", response.data.tokenAuth);
+            localStorage.setItem("email", email)
+            await context.tokenVerification();
+            navigate("/profile")
 
 
         } catch(error) {
@@ -43,13 +46,11 @@ function Signup() {
 
     }
   return (
-    <Box component="div" className="signup">
+    <Box component="div" className="auth">
 
-      <Typography variant="h3" gutterBottom>Sign Up</Typography>
+      <Typography variant="h3" gutterBottom>Login</Typography>
     
-      <Box component="form" onSubmit={handleSignup}>
-        
-        <TextField id="username" label="Username" variant="outlined" onChange={handleUsernameChange} value={username}/>
+      <Box component="form" onSubmit={handleLogin}>
 
         <TextField id="email" type="email" label="Email" variant="outlined" onChange={handleEmailChange} value={email}/>
 
@@ -58,7 +59,7 @@ function Signup() {
         {errorMessage && <p>{errorMessage}</p>}
 
         <Button variant="contained" type="submit" color="secondary">
-        Registrarse
+        Login
         </Button>
       </Box>
       
@@ -66,4 +67,4 @@ function Signup() {
   )
 }
 
-export default Signup;
+export default Login;
