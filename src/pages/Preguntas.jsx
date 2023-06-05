@@ -1,4 +1,4 @@
-import { Card, CardContent, Container, Typography } from "@mui/material";
+import { Button, Card, CardContent, Container, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import * as BackendService from "../services/auth.services";
 import { useEffect, useState } from "react";
@@ -20,6 +20,9 @@ function Preguntas() {
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <h2>Preguntas y respuestas</h2>
+      <Button color="secondary" variant="contained" >
+      <Link to="/preguntas/newQuestion">Añadir pregunta</Link>
+      </Button>
       {questions && questions.map((question) => {
         return (
           <Link to={`/preguntas/${question._id}`}>
@@ -38,6 +41,8 @@ function Preguntas() {
           </Link>
         );
       })}
+    
+      
     </Container>
   );
 }

@@ -8,11 +8,15 @@ import Profile from './pages/profile/Profile';
 import Signout from './pages/profile/Signout';
 import Preguntas from './pages/Preguntas';
 import Respuestas from './pages/Respuestas';
+import Navbar from './components/Navbar';
+import AñadirPregunta from './pages/AñadirPregunta';
+import AñadirRespuesta from './pages/AñadirRespuesta';
+
 
 function App() {
   return (
     <Box component="div" className="App">
-
+    <Navbar/>
       <Routes>
         <Route path= "/auth/signup" element={<Signup/>}/>
         <Route path= "/auth/login" element={<Login/>}/>
@@ -20,6 +24,10 @@ function App() {
         <Route path= "/signout" element={<Signout/>}/>
         <Route path= "/preguntas" element={<Preguntas/>}/>
         <Route path= "/preguntas/:id" element={<Respuestas/>}/>
+        <Route path= "/preguntas/newQuestion" element={<AñadirPregunta/>}/>
+        <Route path= "/preguntas/:id/newAnswer" element={<AñadirRespuesta/>}/>
+
+
 
 
 

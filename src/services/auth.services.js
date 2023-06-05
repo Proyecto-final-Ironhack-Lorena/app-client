@@ -37,6 +37,17 @@ const getAnswers = (id) => {
     return service.get(`/questions/${id}`)
 }
 
+const getNewQuestion = (body) => {
+    //reistrar una nueva pregunta
+    const email = localStorage.getItem("email")
+    return service.post(`/questions/${email}`, body)
+}
+
+const getNewAnswer = (id, body) => {
+    //reistrar una nueva pregunta
+    return service.post(`/questions/${id}/answer`, body)
+}
+
 
 export {
     signup, 
@@ -45,5 +56,7 @@ export {
     updatePerfil,
     getUserData,
     getQuestions,
-    getAnswers 
+    getAnswers,
+    getNewQuestion,
+    getNewAnswer 
 }
