@@ -50,6 +50,7 @@ function AñadirRespuesta() {
         <Button
         variant="contained"
         color="secondary"
+        type="submit"
         sx={{
           backgroundColor: "#F8E3F1",
           color: "#B2D080",
