@@ -48,6 +48,11 @@ const getNewAnswer = (id, body) => {
     return service.post(`/questions/${id}/answer`, body)
 }
 
+const getSearch = (filter) => {
+    //te manda el filtro
+    return service.get(`/questions/filter/${filter}`)
+}
+
 
 export {
     signup, 
@@ -58,5 +63,6 @@ export {
     getQuestions,
     getAnswers,
     getNewQuestion,
-    getNewAnswer 
+    getNewAnswer,
+    getSearch 
 }

@@ -3,8 +3,13 @@ import {
   Card,
   CardContent,
   Container,
+  Divider,
+  IconButton,
+  InputBase,
+  Paper,
   Typography,
 } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 import { Link } from "react-router-dom";
 import * as BackendService from "../services/auth.services";
 import { useEffect, useState } from "react";
@@ -17,6 +22,17 @@ function Preguntas() {
     const questions = await BackendService.getQuestions();
     setQuestions(questions.data);
   };
+
+  const handleSearch = async (event) => {
+    if(event.target.value !== "") {
+      const response = await BackendService.getSearch(event.target.value)
+       setQuestions(response.data);
+    } else {
+      await handleQuestions()
+    }
+     
+  }
+
 
   useEffect(() => {
     handleQuestions();
@@ -46,6 +62,20 @@ function Preguntas() {
       >
         <Link to="/preguntas/newQuestion" id="link">Hacer una pregunta</Link>
       </Button>
+      <Paper
+      component="form"
+      sx={{ p: '2px 4px', display: 'flex', flexDirection: "row", alignItems: 'center', width: 400,  backgroundColor: "#bace9c", marginBottom: "2rem" }}
+    >
+      <InputBase
+        sx={{paddingRight: "10rem"}}
+        placeholder="Buscar pregunta..."
+        onChange={handleSearch}
+      />
+      <IconButton type="button" aria-label="search">
+        <SearchIcon />
+      </IconButton>
+      <Divider sx={{}} orientation="horizontal"  />
+    </Paper>
       {questions &&
         questions.map((question) => {
           return (
