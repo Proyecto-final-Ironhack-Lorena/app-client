@@ -1,0 +1,12 @@
+#link {
+    text-decoration: none !important;
+    color: #B2D080;
+    padding-left: 3rem;
+    padding-right: 3rem;;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
