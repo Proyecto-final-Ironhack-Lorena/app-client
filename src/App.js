@@ -11,6 +11,7 @@ import Respuestas from './pages/Respuestas';
 import Navbar from './components/Navbar';
 import AñadirPregunta from './pages/AñadirPregunta';
 import AñadirRespuesta from './pages/AñadirRespuesta';
+import Home from './pages/Home';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
     <Box component="div" className="App">
     <Navbar/>
       <Routes>
+        <Route path= "/" element={<Home/>}/>
         <Route path= "/auth/signup" element={<Signup/>}/>
         <Route path= "/auth/login" element={<Login/>}/>
         <Route path= "/profile" element={<Profile/>}/>

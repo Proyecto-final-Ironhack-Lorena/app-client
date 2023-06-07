@@ -51,8 +51,8 @@ function AñadirPregunta() {
     }
   ]
   return (
-    <Box component="div">
-      <Typography variant="h3" gutterBottom>
+    <Box component="div" className="card">
+      <Typography variant="h3" gutterBottom sx={{marginTop: "4rem"}}>
         Añadir pregunta
       </Typography>
       <Box component="form" onSubmit={handleNewQuestion}>
@@ -62,6 +62,8 @@ function AñadirPregunta() {
           variant="outlined"
           onChange={handleTitleChange}
           value={title}
+          color="success"
+          sx={{backgroundColor: "#EDF5E0", width: '30rem', marginTop: "2rem" }}
         />
         <TextField
           id="description"
@@ -69,6 +71,8 @@ function AñadirPregunta() {
           variant="outlined"
           onChange={handleDescriptionChange}
           value={description}
+          color="success"
+          sx={{backgroundColor: "#EDF5E0", width: '30rem' }}
         />
         <TextField
           id="kind"
@@ -78,6 +82,8 @@ function AñadirPregunta() {
           variant="outlined"
           onChange={handleKindChange}
           value={kind}
+          color="success"
+          sx={{backgroundColor: "#EDF5E0", width: '30rem' }}
         >
         {tipos.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -87,8 +93,18 @@ function AñadirPregunta() {
 
          </TextField> 
         {errorMessage && <p>{errorMessage}</p>}
-        <Button variant="contained" type="submit" color="secondary">
-          Añadir pregunta!
+        <Button
+        variant="contained"
+        color="secondary"
+        sx={{
+          backgroundColor: "#F8E3F1",
+          color: "#B2D080",
+          "&:hover": { backgroundColor: "#E8F3D8", color: "#B2D080" },
+          alignItems: "center",
+          marginBottom: "1.5rem",
+        }}
+        >
+        Añadir
         </Button>
       </Box>
     </Box>

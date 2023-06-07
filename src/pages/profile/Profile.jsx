@@ -5,6 +5,7 @@ import * as BackendService from "../../services/auth.services";
 import {
   Box,
   Button,
+  Card,
   Container,
   Modal,
   TextField,
@@ -49,9 +50,11 @@ function Profile() {
   const handlegetUserData = async () => {
     const response = await BackendService.getUserData();
     setUserData(response.data);
-    let values = response.data.weekDays.split(" ");
-    setWeeksValue(values[0]);
-    setDaysValue(values[1]);
+    if (response.data.weekDays) {
+      let values = response.data.weekDays.split(" ");
+      setWeeksValue(values[0]);
+      setDaysValue(values[1]);
+    }
     setBabyNameValue(response.data.babyName);
   };
 
@@ -68,11 +71,15 @@ function Profile() {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
+    width: 300,
+    bgcolor: "#F2F7E8",
+    border: "1px solid #000",
+    borderRadius: "10px",
+    boxShadow: 20,
     p: 4,
+    textAlign: "center",
+
+
   };
 
   useEffect(() => {
@@ -81,12 +88,28 @@ function Profile() {
 
   return (
     <Container>
-      <h3>Perfil</h3>
-      <div>
+      <Typography variant="h3" gutterBottom sx={{ marginTop: "6rem" }}>
+        {" "}
+        Perfil{" "}
+      </Typography>
+      <Box>
         <ImageUploader />
-      </div>
-      <h4>{userData && userData.username}</h4>
-      <div>
+      </Box>
+      <Typography
+        variant="h5"
+        gutterBottom
+        sx={{ marginTop: "2rem", marginBottom: "1.5rem" }}
+      >
+        @{userData && userData.username}{" "}
+      </Typography>
+      <Box>
+        <Typography
+          variant="h6"
+          gutterBottom
+        >
+          Estoy de...
+        </Typography>
+
         <TextField
           type="number"
           value={weeksValue}
@@ -145,22 +168,25 @@ function Profile() {
             },
           }}
         ></TextField>
+        <br/>  
         <Button
           variant="contained"
+          color="secondary"
           onClick={handleCalcularMeses}
           disabled={!weeksValue}
+          sx={{backgroundColor: "#F8E3F1", color: "#B2D080", '&:hover': {backgroundColor: '#E8F3D8', color: "#B2D080"}, alignItems: "center", marginTop: "2rem" }}
         >
-          Calcular meses
-        </Button>
+            ¿De cuántos meses estoy?
+        </Button>      
         <DatosEmbarazo
           id="babyName"
           type="text"
           name="Nombre del bebé"
           onChange={handleBabyNameValue}
           value={babyNameValue}
-          showButton={babyNameValue === ""}
+          showButton={babyNameValue === "" || babyNameValue === undefined}
         />
-      </div>
+      </Box>
       <Modal
         open={open}
         onClose={handleCloseModal}
@@ -168,10 +194,7 @@ function Profile() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Cálculo de meses
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" sx={{ mt: 2, color: "#C897B8"}}>
             Estás de{" "}
             {Math.floor(
               toMonths({ weeks: Number(weeksValue), days: Number(daysValue) })

@@ -1,7 +1,14 @@
-import { Button, Card, CardContent, Container, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  Container,
+  Typography,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import * as BackendService from "../services/auth.services";
 import { useEffect, useState } from "react";
+import "./everyPages.css"
 
 function Preguntas() {
   const [questions, setQuestions] = useState();
@@ -19,30 +26,46 @@ function Preguntas() {
     <Container
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <h2>Preguntas y respuestas</h2>
-      <Button color="secondary" variant="contained" >
-      <Link to="/preguntas/newQuestion">Añadir pregunta</Link>
+      <Typography
+        variant="h3"
+        gutterBottom
+        sx={{ marginTop: "2rem", marginBottom: "2rem" }}
+      >
+        Preguntas frecuentes
+      </Typography>
+      <Button
+        variant="contained"
+        color="secondary"
+        sx={{
+          backgroundColor: "#F8E3F1",
+          color: "#B2D080",
+          "&:hover": { backgroundColor: "#E8F3D8", color: "#B2D080" },
+          alignItems: "center",
+          marginBottom: "2rem"
+        }}
+      >
+        <Link to="/preguntas/newQuestion" id="link">Hacer una pregunta</Link>
       </Button>
-      {questions && questions.map((question) => {
-        return (
-          <Link to={`/preguntas/${question._id}`}>
-            <Card sx={{ width: 700 }} variant="outlined">
-              <CardContent>
-                <Typography
-                  sx={{ fontSize: 30 }}
-                  color="text.primary"
-                  gutterBottom
-                >
-                  {question.title}
-                </Typography>
-                <Typography variant="body2">{question.description}</Typography>
-              </CardContent>
-            </Card>
-          </Link>
-        );
-      })}
-    
-      
+      {questions &&
+        questions.map((question) => {
+          return (
+            <Link id="link" to={`/preguntas/${question._id}`}>
+              <Card sx={{ width: 700, marginBottom: "1rem", backgroundColor: "#F2F7E8", color: "#C897B8", '&:hover': {backgroundColor: '#E8F3D8', color: "#B2D080"}}} variant="outlined">
+                <CardContent>
+                  <Typography
+                    sx={{ fontSize: 30 }}
+                    gutterBottom
+                  >
+                    {question.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{color: "#000"}}>
+                    {question.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Link>
+          );
+        })}
     </Container>
   );
 }

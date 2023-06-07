@@ -15,11 +15,13 @@ import {
   Toolbar,
   Tooltip,
   Typography,
+  createTheme,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
+import '@fontsource/roboto/300.css';
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -40,18 +42,18 @@ function Navbar() {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", backgroundColor: "#CFDEBA" }} >
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        Momizy
       </Typography>
       <Divider />
-      <List>
+      <List sx={{backgroundColor: "#EAF2DE"}}>
         {!context.logged && (
           <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemButton sx={{ textAlign: "center"}}>
               <Link
                 to="/auth/signup"
-                style={{ textDecoration: "none", color: "#000" }}
+                style={{ textDecoration: "none"  }}
               >
                 <ListItemText primary="Registro" />
               </Link>
@@ -60,10 +62,10 @@ function Navbar() {
         )}
         {!context.logged && (
           <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemButton sx={{ textAlign: "center"}}>
               <Link
                 to="/auth/login"
-                style={{ textDecoration: "none", color: "#000" }}
+                style={{ textDecoration: "none"}}
               >
                 <ListItemText primary="Iniciar Sesión" />
               </Link>
@@ -75,7 +77,7 @@ function Navbar() {
             <ListItemButton sx={{ textAlign: "center" }}>
               <Link
                 to="/preguntas"
-                style={{ textDecoration: "none", color: "#000" }}
+                style={{ textDecoration: "none"}}
               >
                 <ListItemText primary="Preguntas y respuestas" />
               </Link>
@@ -89,9 +91,9 @@ function Navbar() {
   const container = window.document.body;
 
   return (
-    <Box sx={{ display: "flex", marginBottom: '5rem' }}>
-      <AppBar component="nav">
-        <Toolbar>
+    <Box sx={{ display: "flex", marginBottom: '5rem'}}>
+      <AppBar component="nav" >
+        <Toolbar sx={{ backgroundColor: "#CFDEBA"}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -102,7 +104,7 @@ function Navbar() {
             <MenuIcon />
           </IconButton>
           {!context.logged && (
-            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Box sx={{ display: { xs: "none", sm: "block", backgroundColor: "#bace9c", borderRadius: "7px"} }}>
               <Button sx={{ color: "#fff" }}>
                 <Link
                   to="/auth/signup"
@@ -114,7 +116,7 @@ function Navbar() {
             </Box>
           )}
           {!context.logged && (
-            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Box sx={{ display: { xs: "none", sm: "block", backgroundColor: "#bace9c", marginLeft: "1rem", borderRadius: "7px"} }}>
               <Button sx={{ color: "#fff" }}>
                 <Link
                   to="/auth/login"
@@ -126,7 +128,7 @@ function Navbar() {
             </Box>
           )}
           {context.logged && (
-            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Box sx={{ display: { xs: "none", sm: "block", backgroundColor: "#bace9c", borderRadius: "7px" } }}>
               <Button sx={{ color: "#fff" }}>
                 <Link
                   to="/preguntas"
@@ -140,9 +142,9 @@ function Navbar() {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block", marginRight:  "12rem"} }}
           >
-            MUI
+            Momizy
           </Typography>
           {context.logged && (
             <Box sx={{ flexGrow: 0 }}>
@@ -152,7 +154,7 @@ function Navbar() {
                 </IconButton>
               </Tooltip>
               <Menu
-                sx={{ mt: "45px" }}
+                sx={{ mt: "45px"}}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
@@ -167,12 +169,12 @@ function Navbar() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={handleCloseUserMenu} sx={{textDecoration: "none"}}>
                   <Link textAlign="center" to="/profile">
                     Perfil
                   </Link>
                 </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={handleCloseUserMenu} sx={{textDecoration: "none"}}>
                   <Link textAlign="center" to="/signout">
                     Cerrar Sesión
                   </Link>

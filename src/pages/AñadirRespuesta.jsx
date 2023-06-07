@@ -32,20 +32,33 @@ function AñadirRespuesta() {
   };
   return (
     <Box component="div">
-      <Typography variant="h3" gutterBottom>
+      <Typography variant="h3" gutterBottom sx={{marginTop: "8rem", marginBottom: "3rem"}}>
         Añadir respuesta
       </Typography>
-      <Box component="form" onSubmit={handleNewAnswer}>
+      <Box component="form" onSubmit={handleNewAnswer} className="card">
         <TextField
           id="description"
           label="Respuesta..."
           variant="outlined"
+          multiline
           onChange={handleDescriptionChange}
           value={description}
+          color="success"
+          sx={{backgroundColor: "#EDF5E0", width: '30rem' }}
         />
         {errorMessage && <p>{errorMessage}</p>}
-        <Button variant="contained" type="submit" color="secondary">
-          Añadir respuesta!
+        <Button
+        variant="contained"
+        color="secondary"
+        sx={{
+          backgroundColor: "#F8E3F1",
+          color: "#B2D080",
+          "&:hover": { backgroundColor: "#E8F3D8", color: "#B2D080" },
+          alignItems: "center",
+          marginBottom: "1.5rem",
+        }}
+        >
+        Responder
         </Button>
       </Box>
     </Box>
