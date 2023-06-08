@@ -19,13 +19,17 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import '@fontsource/roboto/300.css';
+import * as BackendService from "../services/auth.services";
+
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [userData, setUserData] = useState(null);
+
 
   const context = useContext(AuthContext);
 
@@ -41,6 +45,15 @@ function Navbar() {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const handlegetUserData = async () => {
+    const response = await BackendService.getUserData();
+    setUserData(response.data);
+  };
+
+  useEffect(() => {
+    handlegetUserData();
+  }, []);
+
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", backgroundColor: "#CFDEBA" }} >
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -50,14 +63,17 @@ function Navbar() {
       <List sx={{backgroundColor: "#EAF2DE"}}>
         {!context.logged && (
           <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "center"}}>
               <Link
                 to="/auth/signup"
-                style={{ textDecoration: "none"  }}
+                className="a"
+                style={{width: '100%'}}
               >
+            <ListItemButton sx={{ textAlign: "center"}}>
+
                 <ListItemText primary="Registro" />
-              </Link>
             </ListItemButton>
+
+              </Link>
           </ListItem>
         )}
         {!context.logged && (
@@ -65,7 +81,8 @@ function Navbar() {
             <ListItemButton sx={{ textAlign: "center"}}>
               <Link
                 to="/auth/login"
-                style={{ textDecoration: "none"}}
+                style={{ width: '100%'}}
+                className="a"
               >
                 <ListItemText primary="Iniciar Sesión" />
               </Link>
@@ -74,26 +91,47 @@ function Navbar() {
         )}
         {context.logged && (
           <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
               <Link
                 to="/preguntas"
-                style={{ textDecoration: "none"}}
+                style={{ width: '100%'}}
+                className="a"
               >
+            <ListItemButton sx={{ textAlign: "center" }}>
+
                 <ListItemText primary="Preguntas y respuestas" />
-              </Link>
             </ListItemButton>
+
+              </Link>
           </ListItem>
         )}
         {context.logged && (
           <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
               <Link
                 to="/diario"
-                style={{ textDecoration: "none"}}
+                style={{ width: '100%'}}
+                className="a"
               >
+            <ListItemButton sx={{ textAlign: "center" }}>
+
                 <ListItemText primary="Mi Diario" />
-              </Link>
             </ListItemButton>
+
+              </Link>
+          </ListItem>
+        )}
+        {context.logged && (
+          <ListItem disablePadding>
+              <Link
+                to="/listas"
+                style={{ width: '100%'}}
+                className="a"
+              >
+            <ListItemButton sx={{ textAlign: "center" }}>
+
+                <ListItemText primary="Mis Listas" />
+            </ListItemButton>
+
+              </Link>
           </ListItem>
         )}
       </List>
@@ -105,7 +143,7 @@ function Navbar() {
   return (
     <Box sx={{ display: "flex", marginBottom: '5rem'}}>
       <AppBar component="nav" >
-        <Toolbar sx={{ backgroundColor: "#CFDEBA"}}>
+        <Toolbar sx={{ backgroundColor: "#CFDEBA", justifyContent: "space-between"}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -117,50 +155,72 @@ function Navbar() {
           </IconButton>
           {!context.logged && (
             <Box sx={{ display: { xs: "none", sm: "block", backgroundColor: "#bace9c", borderRadius: "7px"} }}>
-              <Button sx={{ color: "#fff" }}>
                 <Link
                   to="/auth/signup"
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
+              <Button sx={{ color: "#fff" }}>
+
                   Registro
-                </Link>
               </Button>
+
+                </Link>
             </Box>
           )}
           {!context.logged && (
             <Box sx={{ display: { xs: "none", sm: "block", backgroundColor: "#bace9c", marginLeft: "1rem", borderRadius: "7px"} }}>
-              <Button sx={{ color: "#fff" }}>
                 <Link
                   to="/auth/login"
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
+              <Button sx={{ color: "#fff" }}>
+
                   Iniciar Sesión
-                </Link>
               </Button>
+
+                </Link>
             </Box>
           )}
           {context.logged && (
             <Box sx={{ display: { xs: "none", sm: "block", backgroundColor: "#bace9c", borderRadius: "7px" } }}>
-              <Button sx={{ color: "#fff" }}>
                 <Link
                   to="/preguntas"
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
+              <Button sx={{ color: "#fff" }}>
+
                   Preguntas y respuestas
-                </Link>
               </Button>
+
+                </Link>
             </Box>
           )}
           {context.logged && (
             <Box sx={{ display: { xs: "none", sm: "block", backgroundColor: "#bace9c", borderRadius: "7px", marginLeft: "1rem"  } }}>
-              <Button sx={{ color: "#fff"}}>
                 <Link
                   to="/diario"
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
+              <Button sx={{ color: "#fff"}}>
+
                   Mi Diario
-                </Link>
               </Button>
+
+                </Link>
+            </Box>
+          )}
+          {context.logged && (
+            <Box sx={{ display: { xs: "none", sm: "block", backgroundColor: "#bace9c", borderRadius: "7px", marginLeft: "1rem"  } }}>
+                <Link
+                  to="/listas"
+                  style={{ textDecoration: "none", color: "#fff" }}
+                >
+              <Button sx={{ color: "#fff"}}>
+
+                  Mis Listas
+              </Button>
+
+                </Link>
             </Box>
           )}
           <Typography
@@ -171,10 +231,10 @@ function Navbar() {
             Momizy
           </Typography>
           {context.logged && (
-            <Box sx={{ flexGrow: 0 }}>
+            <Box sx={{ flexGrow: 0, justifySelf: "flex-end" }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt={userData && userData.username} src={userData && userData.image} />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -193,13 +253,14 @@ function Navbar() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleCloseUserMenu} sx={{textDecoration: "none"}}>
-                  <Link textAlign="center" to="/profile">
-                    Perfil
+                
+                  <Link textAlign="center" to="/profile" className="a">
+                  <MenuItem onClick={handleCloseUserMenu} sx={{textDecoration: "none"}}>Perfil
+                  </MenuItem>
                   </Link>
-                </MenuItem>
+                
                 <MenuItem onClick={handleCloseUserMenu} sx={{textDecoration: "none"}}>
-                  <Link textAlign="center" to="/signout">
+                  <Link textAlign="center" to="/signout" className="a">
                     Cerrar Sesión
                   </Link>
                 </MenuItem>

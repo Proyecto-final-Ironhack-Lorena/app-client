@@ -49,6 +49,8 @@ function NewDiario() {
     }
   };
 
+  
+
   const tipos = [
     {
       value: "😊",
@@ -112,39 +114,35 @@ function NewDiario() {
           color="success"
           sx={{ backgroundColor: "#EDF5E0", width: "30rem" }}
         />
-        <Box sx={{ display: "flex" }}>
-          <Card sx={{ width: "10rem", backgroundColor: "#EDF5E0" }}>
-            <Typography component="legend">Ranking del día</Typography>
-            <Rating
-              name="simple-controlled"
-              value={score}
-              onChange={handleScoreChange}
-            />
-          </Card>
+        <Box sx={{display: "flex"}}>
+             <Card sx={{width: "10rem", backgroundColor: "#EDF5E0"}}>
+          <Typography component="legend">Ranking del día</Typography>
+          <Rating
+            name="simple-controlled"
+            value={score}
+            onChange={handleScoreChange}
+          />
+        </Card>
 
-          <TextField
-            id="emoji"
-            label="Emoji"
-            select
-            defaultValue="😊"
-            variant="outlined"
-            onChange={handleEmojiChange}
-            value={emoji}
-            color="success"
-            sx={{
-              backgroundColor: "#EDF5E0",
-              width: "10rem",
-              marginLeft: "9rem",
-            }}
-          >
-            {tipos.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
+        <TextField
+          id="emoji"
+          label="Emoji"
+          select
+          defaultValue="😊"
+          variant="outlined"
+          onChange={handleEmojiChange}
+          value={emoji}
+          color="success"
+          sx={{ backgroundColor: "#EDF5E0", width: "10rem", marginLeft: "9rem" }}
+        >
+          {tipos.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
         </Box>
-
+       
         {errorMessage && <p>{errorMessage}</p>}
         <Button
           variant="contained"

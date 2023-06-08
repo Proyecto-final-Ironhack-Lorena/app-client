@@ -52,6 +52,8 @@ function DatosDiario() {
               width: "10rem",
               backgroundColor: "#F8E3F1",
               marginRight: "6rem",
+              overflowWrap: "break-word"
+
             }}
           >
             <Typography component="legend" variant="h6">Ranking del día</Typography>

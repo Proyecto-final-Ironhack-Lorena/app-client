@@ -53,7 +53,7 @@ function Diario() {
         diario.map((diario) => {
           return (
             <Link id="link" to={`/diario/${diario._id}`}>
-              <Card sx={{ width: 700, marginBottom: "1rem", backgroundColor: "#F2F7E8", color: "#C897B8", '&:hover': {backgroundColor: '#E8F3D8', color: "#B2D080"}}} variant="outlined">
+              <Card sx={{width: "70vw", marginBottom: "1rem", backgroundColor: "#F2F7E8", color: "#C897B8", '&:hover': {backgroundColor: '#E8F3D8', color: "#B2D080"}}} variant="outlined">
                 <CardContent>
                   <Typography
                     sx={{ fontSize: 30 }}

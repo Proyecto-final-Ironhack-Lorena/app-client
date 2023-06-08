@@ -72,7 +72,33 @@ const getNewDiario = (body) => {
     return service.post(`/diario/${email}`, body)
 }
 
+const getListas = () => {
+    //tenemos todas las listas
+    const email = localStorage.getItem("email")
+    return service.get(`/list/all/${email}`)
 
+}
+
+const getListasId = (id) => {
+    //lista por id
+    return service.get(`/list/${id}`)
+}
+
+const getNewList = (body) => {
+    //nueva lista
+    const email = localStorage.getItem("email")
+    return service.post(`/list/${email}`, body)
+}
+
+const getUpdateList = (id, body) => {
+    //actualizar una lista ya creada
+    return service.put(`/list/${id}`, body)
+}
+
+const getDeleteList = (id) => {
+    //borra la lista que quieras
+    return service.delete(`/list/${id}`)
+}
 
 export {
     signup, 
@@ -87,5 +113,10 @@ export {
     getSearch,
     getDiarios,
     getDiarioId,
-    getNewDiario
+    getNewDiario,
+    getListas,
+    getListasId,
+    getNewList,
+    getUpdateList,
+    getDeleteList
 }

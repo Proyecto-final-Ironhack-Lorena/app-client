@@ -1,9 +1,15 @@
 import "@fontsource/roboto/300.css";
+import { Typography } from "@mui/material";
+import { Box, Container } from "@mui/system";
 
 function Home() {
   return (
-    <div>
-      <p>
+    <Container sx={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+    <img src="/logo.png" alt="logoo" style= {{width: "34%"}}/>
+      <Typography sx={{  width: "50vw",
+              backgroundColor: "#F8E3F1",
+              boxShadow: "2px 2px olive",
+              padding: "1rem"}}>
         ¡Bienvenida a nuestra comunidad para embarazadas! Aquí encontrarás
         información, apoyo y recursos diseñados específicamente para acompañarte
         en esta maravillosa etapa de tu vida. Nuestro objetivo es brindarte el
@@ -12,8 +18,8 @@ function Home() {
         experiencia con mujeres que comprenden y valoran cada momento especial.
         ¡Juntas, construiremos recuerdos inolvidables mientras esperamos la
         llegada de nuestros pequeños milagros!
-      </p>
-    </div>
+      </Typography>
+    </Container>
   );
 }
 
