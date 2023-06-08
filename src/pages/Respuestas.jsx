@@ -19,9 +19,15 @@ function Respuestas() {
   }, [params.id]);
 
   return (
-    <div>
+    <Box>
       <Typography variant="h3" sx={{ marginTop: "7rem" }}>
         {question && question.title}
+      </Typography>
+      <Typography
+        variant="h5"
+        sx={{ marginTop: "2rem"}}
+      >
+        @{question && question.user.username}
       </Typography>
       <Card
         sx={{
@@ -65,13 +71,13 @@ function Respuestas() {
               variant="outlined"
             >
               <CardContent>
-                <Typography variant="body2">{answer.description} </Typography>
+                <Typography variant="body2">@{answer.user.username}: {answer.description} </Typography>
               </CardContent>
             </Card>
           );
         })}
         </Box>
-    </div>
+    </Box>
   );
 }
 

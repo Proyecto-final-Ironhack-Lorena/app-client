@@ -45,13 +45,33 @@ const getNewQuestion = (body) => {
 
 const getNewAnswer = (id, body) => {
     //reistrar una nueva pregunta
-    return service.post(`/questions/${id}/answer`, body)
+    const email = localStorage.getItem("email")
+    return service.post(`/questions/${id}/${email}/answer`, body)
 }
 
 const getSearch = (filter) => {
     //te manda el filtro
     return service.get(`/questions/filter/${filter}`)
 }
+
+const getDiarios = () => {
+    //te muestra todas las entradas del diario
+    const email = localStorage.getItem("email")
+    return service.get(`/diario/${email}`)
+}
+
+const getDiarioId = (id) => {
+    //un solo diario
+    const email = localStorage.getItem("email")
+    return service.get(`/diario/${email}/${id}`)
+}
+
+const getNewDiario = (body) => {
+    //añadir nuevo diario
+    const email = localStorage.getItem("email")
+    return service.post(`/diario/${email}`, body)
+}
+
 
 
 export {
@@ -64,5 +84,8 @@ export {
     getAnswers,
     getNewQuestion,
     getNewAnswer,
-    getSearch 
+    getSearch,
+    getDiarios,
+    getDiarioId,
+    getNewDiario
 }

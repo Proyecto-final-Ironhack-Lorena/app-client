@@ -12,6 +12,13 @@ import Navbar from './components/Navbar';
 import AñadirPregunta from './pages/AñadirPregunta';
 import AñadirRespuesta from './pages/AñadirRespuesta';
 import Home from './pages/Home';
+import Diario from './pages/Diario';
+
+import { DialerSipRounded } from '@mui/icons-material';
+import DatosDiario from './pages/DatosDiario';
+import NewDiario from './pages/NewDiario';
+import Error from './pages/Error/Error';
+import NotFound from './pages/Error/NotFound';
 
 
 function App() {
@@ -28,13 +35,12 @@ function App() {
         <Route path= "/preguntas/:id" element={<Respuestas/>}/>
         <Route path= "/preguntas/newQuestion" element={<AñadirPregunta/>}/>
         <Route path= "/preguntas/:id/newAnswer" element={<AñadirRespuesta/>}/>
+        <Route path= "/diario" element={<Diario/>}/>
+        <Route path= "/diario/:id" element={<DatosDiario/>}/>
+        <Route path= "/diario/newDiario" element={<NewDiario/>}/>
 
-
-
-
-
-
-
+        <Route path= "/error" element={<Error/>}/>
+        <Route path= "*" element={<NotFound/>}/>
       </Routes>
     </Box>
   );

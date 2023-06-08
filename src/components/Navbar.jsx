@@ -84,6 +84,18 @@ function Navbar() {
             </ListItemButton>
           </ListItem>
         )}
+        {context.logged && (
+          <ListItem disablePadding>
+            <ListItemButton sx={{ textAlign: "center" }}>
+              <Link
+                to="/diario"
+                style={{ textDecoration: "none"}}
+              >
+                <ListItemText primary="Mi Diario" />
+              </Link>
+            </ListItemButton>
+          </ListItem>
+        )}
       </List>
     </Box>
   );
@@ -135,6 +147,18 @@ function Navbar() {
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
                   Preguntas y respuestas
+                </Link>
+              </Button>
+            </Box>
+          )}
+          {context.logged && (
+            <Box sx={{ display: { xs: "none", sm: "block", backgroundColor: "#bace9c", borderRadius: "7px", marginLeft: "1rem"  } }}>
+              <Button sx={{ color: "#fff"}}>
+                <Link
+                  to="/diario"
+                  style={{ textDecoration: "none", color: "#fff" }}
+                >
+                  Mi Diario
                 </Link>
               </Button>
             </Box>
