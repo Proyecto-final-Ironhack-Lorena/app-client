@@ -15,7 +15,7 @@ function NewDiario() {
   const [date, setDate] = useState();
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
-  const [score, setScore] = useState("Dolor");
+  const [score, setScore] = useState("Consulta");
   const [emoji, setEmoji] = useState("😊");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();

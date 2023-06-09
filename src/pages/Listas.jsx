@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
-import NewListItem from "../components/NewListItem";
 
 function Listas() {
   const [lista, setListas] = useState();

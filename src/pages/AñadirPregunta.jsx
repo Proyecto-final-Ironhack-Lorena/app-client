@@ -48,6 +48,10 @@ function AñadirPregunta() {
     {
       value: 'Síntoma',
       label: 'Síntoma'
+    },
+    {
+      value: 'Consulta',
+      label: 'Consulta'
     }
   ]
   return (

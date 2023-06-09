@@ -74,7 +74,7 @@ function Preguntas() {
       <IconButton type="button" aria-label="search">
         <SearchIcon />
       </IconButton>
-      <Divider sx={{}} orientation="horizontal"  />
+      <Divider orientation="horizontal"  />
     </Paper>
       {questions &&
         questions.map((question) => {

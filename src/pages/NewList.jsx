@@ -2,8 +2,7 @@ import { useState } from "react";
 import * as BackendService from "../services/auth.services";
 import { useNavigate } from "react-router";
 import { Box } from "@mui/system";
-import { Button, MenuItem, TextField, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Button, TextField, Typography } from "@mui/material";
 import NewListItem from "../components/NewListItem";
 
 function NewList() {
