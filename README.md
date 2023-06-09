@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# readmi
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Momizy
 
-## Available Scripts
+[See the App](https://momizy-app.netlify.app/)
 
-In the project directory, you can run:
+![logo marca empresa circular redondo acuarela rosa.png](README/logo_marca_empresa_circular_redondo_acuarela_rosa.png)
 
-### `npm start`
+### Descripción
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Esta página web está enfocada en las mujeres embarazadas, para que todas ellas tengan un lugar sencillo de utilizar para poder organizar la llegada del más pequeño de la casa.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Tecnologías utilizadas
 
-### `npm test`
+- HTML
+- CSS
+- JavaScript
+- React
+- Axios
+- React Context
+- React Router
+- MUI
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Estructura del cliente
 
-### `npm run build`
+- 404 - Una página para saber como usuario que has hecho algo mal tu, no el servidor.
+- 500 - Una página para saber que el error no es tuyo como usuario, sino que es algo que ha fallado internamente.
+- Home - Esta página tiene un pequeño resumen de lo que es la página y solo puedes registrarte o hacer login.
+- Signup - para registrarse en la web.
+- Login - Si ya tienes una cuenta creada o acabas de crearla tendrás que hacer login para acceder a la web.
+- Profile- donde puedes ponerte una foto de perfil y además escribir de cuantas semanas estás y el nombre del bebé.
+- Preguntas y Respuestas - Sitio donde puedes ver las preguntas y respuestas que han hecho otras embarazadas de la plataforma.
+- AñadirPregunta y AñadirRespuesta - Ambas son para formular, una para preguntas y otra para respuestas.
+- Diario - Donde puedes ver tus diferentes entradas de diario en lista.
+- NewDiario - Escribes una nueva entrada de diario y al guardarla se añade a la página anterior.
+- Listas - Donde tienes las listas que has creado.
+- NewList - Para crear una nueva lista con los items que quieras.
+- DatosLista - En cada lista puedes ver el titulo y añadir items si lo quieres
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Rutas de Cliente
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Path | Page | Components | Permissions | Behavior |
+| --- | --- | --- | --- | --- |
+| / | Home |  | public | Página de Home |
+| /signup | Signup |  | public | Para registrarte en la página |
+| /login | Login |  | public | Para hacer login en la página |
+| /profile | Profile | DatosEmbarazo, ImageUploader | user only | Donde tienes tu página de Perfil |
+| /signout | Signout |  | user only | Para cerrar sesion |
+| /preguntas | Preguntas |  | user only | Donde salen todas las preguntas |
+| /preguntas/:id | Respuestas |  | user only | Cuando te metes en una sola pregunta |
+| /preguntas/newQuestion | AñadirPregunta |  | user only | Para añadir una nueva pregunta |
+| /preguntas/:id/newAnswer | AñadirRespuesta |  | user only | Para añadir una respuesta |
+| /diario | Diario |  | user only | Donde ves todas las entradas de tu diario |
+| /diario/:id | DatosDiario |  | user only | Cuando te metes en una entrada |
+| /diario/newDiario | NewDiario |  | user only | Para crear una nueva entrada de diario |
+| /listas | Listas |  | user only | Donde ves todas tus listas |
+| /lista/:id | DatosLista | NewListItem | user only | Cuando te metes en una lista  |
+| /lista/newList | NewList | NewListItem | user only | Para crear una nueva lista |
+| /error | Error | Navbar |  | error |
+| * | NotFound |  |  | NotFound |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Otros componentes
 
-### `npm run eject`
+- Navbar
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Context
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- auth.context
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Project
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+[Link del repositorio del Cliente](https://github.com/Proyecto-final-Ironhack-Lorena/app-client)
 
-## Learn More
+[Link del repositorio del Server](https://github.com/Proyecto-final-Ironhack-Lorena/app-server)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[Link del Deploy](https://momizy-app.netlify.app/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Slides
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Link a los Slides](https://www.canva.com/design/DAFlUuGxEyo/4QYe3ho-XVWaPPU9lNO33w/view?utm_content=DAFlUuGxEyo&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
